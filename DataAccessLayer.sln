@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{90558139-5A6C-4A3A-AC85-9D3246CE7791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.SqlServer", "DataAccessLayer.MsSQL\DataAccessLayer.SqlServer.csproj", "{373A5702-E505-46D3-9347-8BB303A70978}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90558139-5A6C-4A3A-AC85-9D3246CE7791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90558139-5A6C-4A3A-AC85-9D3246CE7791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90558139-5A6C-4A3A-AC85-9D3246CE7791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90558139-5A6C-4A3A-AC85-9D3246CE7791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373A5702-E505-46D3-9347-8BB303A70978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373A5702-E505-46D3-9347-8BB303A70978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373A5702-E505-46D3-9347-8BB303A70978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373A5702-E505-46D3-9347-8BB303A70978}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C1048886-CD2C-4ABF-BF16-FA43A894C982}
+	EndGlobalSection
+EndGlobal
