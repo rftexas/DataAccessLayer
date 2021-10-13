@@ -5,9 +5,10 @@ namespace DataAccessLayer.SqlServer
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddSqlServerDataAccessLayer(this IServiceCollection services, string connectionString)
+        public static IServiceCollection AddSqlServerDataAccessLayer<TConnection>(this IServiceCollection services, string connectionString)
         {
-            services.AddSingleton(new DataConnectionFactory(connectionString, s => new SqlConnection(s)));
+            services.AddSingleton(new DataConnectionFactory<TConnection>(connectionString, s => new SqlConnection(s)));
+            services.AddScoped<IDataAccessLayer<TConnection>, AdoDataAccessLayer<TConnection>>();
 
             return services;
         }

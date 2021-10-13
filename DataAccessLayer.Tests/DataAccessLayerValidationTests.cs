@@ -6,7 +6,7 @@ namespace DataAccessLayer.Tests
 {
     public class DataAccessLayerValidationTests
     {
-        private readonly AdoDataAccessLayer _dal = new(new DataConnectionFactory("", s => new FakeDbConnection(s)));
+        private readonly AdoDataAccessLayer<DataAccessLayerValidationTests> _dal = new(new DataConnectionFactory<DataAccessLayerValidationTests>("", s => new FakeDbConnection(s)));
 
         [Fact]
         public async Task Validates_queries()

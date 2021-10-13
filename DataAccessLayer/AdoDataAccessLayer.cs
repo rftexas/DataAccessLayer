@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class AdoDataAccessLayer : IDataAccessLayer
+    public class AdoDataAccessLayer<TConnection> : IDataAccessLayer<TConnection>
     {
         private readonly DataConnectionFactory _factory;
 
-        public AdoDataAccessLayer(DataConnectionFactory factory)
+        public AdoDataAccessLayer(DataConnectionFactory<TConnection> factory)
         {
             _factory = factory;
         }

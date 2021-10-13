@@ -3,6 +3,11 @@ using System.Data.Common;
 
 namespace DataAccessLayer
 {
+    public class DataConnectionFactory<TConnection>: DataConnectionFactory
+    {
+        public DataConnectionFactory(string connString, Func<string, DbConnection> factory) : base(connString, factory) { }
+    }
+
     public class DataConnectionFactory
     {
         public DataConnectionFactory(string connString, Func<string, DbConnection> factory) => (_connectionString, _factory) = (connString, factory);

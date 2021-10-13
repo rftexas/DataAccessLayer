@@ -26,7 +26,7 @@ namespace DataAccessLayer.Tests
             var conn = new FakeDbConnection("");
             conn.AddResultSet(expectedResult);
 
-            var dal = new AdoDataAccessLayer(new DataConnectionFactory("", _ => conn));
+            var dal = new AdoDataAccessLayer<DataAccessQueryTests>(new DataConnectionFactory<DataAccessQueryTests>("", _ => conn));
 
             var result = await dal.Query(new TestQuery<Result>("i"));
             result.Should().NotBeEmpty();
@@ -41,7 +41,7 @@ namespace DataAccessLayer.Tests
             var conn = new FakeDbConnection("");
             conn.AddResultSet(expectedResult);
 
-            var dal = new AdoDataAccessLayer(new DataConnectionFactory("", _ => conn));
+            var dal = new AdoDataAccessLayer<DataAccessQueryTests>(new DataConnectionFactory<DataAccessQueryTests>("", _ => conn));
 
             var result = await dal.Query(new TestQuery<ResultStruct>("i"));
             result.Should().NotBeEmpty();

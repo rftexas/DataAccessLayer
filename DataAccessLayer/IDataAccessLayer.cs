@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public interface IDataAccessLayer
+    public interface IDataAccessLayer<TConnection>
     {
         /// <summary>
         /// Executes a query against the database.
