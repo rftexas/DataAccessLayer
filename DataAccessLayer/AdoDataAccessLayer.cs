@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -39,6 +40,7 @@ namespace DataAccessLayer
 
         public async Task Execute(DataAccess.Command command)
         {
+            if (!command.Validate()) throw new InvalidCommandException("Command is invalid");
             using var connection = _factory.GetConnection();
 
             var cmd = CreateCommand(connection, command.Parameters, command.QueryText, command.CommandType);
@@ -50,6 +52,7 @@ namespace DataAccessLayer
 
         public async Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query) where T: new()
         {
+            if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();
 
             var cmd = CreateCommand(connection, query.Parameters, query.QueryText, query.CommandType);
@@ -105,6 +108,7 @@ namespace DataAccessLayer
             where T : new() 
             where TOut:new()
         {
+            if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();
 
             var cmd = CreateCommand(connection, query.Parameters, query.QueryText, query.CommandType);

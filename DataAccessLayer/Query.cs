@@ -29,6 +29,11 @@
                 /// Defaults to <see cref="System.Data.CommandType.Text"/>
                 /// </summary>
                 public System.Data.CommandType CommandType { get; protected set; } = System.Data.CommandType.Text;
+
+                internal bool Validate()
+                {
+                    return !string.IsNullOrEmpty(QueryText);
+                }
             }
 
             /// <summary>
@@ -51,6 +56,12 @@
                 /// Defaults to <see cref="System.Data.CommandType.Text"/>
                 /// </summary>
                 public System.Data.CommandType CommandType { get; protected set; } = System.Data.CommandType.Text;
+
+
+                internal bool Validate()
+                {
+                    return !string.IsNullOrEmpty(QueryText);
+                }
             }
         }
     }
