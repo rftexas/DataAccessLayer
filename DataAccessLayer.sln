@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.SqlServer", "DataAccessLayer.MsSQL\DataAccessLayer.SqlServer.csproj", "{373A5702-E505-46D3-9347-8BB303A70978}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer.Tests", "DataAccessLayer.Tests\DataAccessLayer.Tests.csproj", "{52353FDE-A3E1-4E86-AB73-36A293BC02F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{373A5702-E505-46D3-9347-8BB303A70978}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{373A5702-E505-46D3-9347-8BB303A70978}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{373A5702-E505-46D3-9347-8BB303A70978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52353FDE-A3E1-4E86-AB73-36A293BC02F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52353FDE-A3E1-4E86-AB73-36A293BC02F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52353FDE-A3E1-4E86-AB73-36A293BC02F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52353FDE-A3E1-4E86-AB73-36A293BC02F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

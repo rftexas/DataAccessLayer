@@ -1,7 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>rfreels</Authors>
+    <Company>FreelsTechnology</Company>
+    <RepositoryUrl>https://github.com/rftexas/DataAccessLayer</RepositoryUrl>
+    <PackageTags>Database</PackageTags>
+    <Description>A library to create CQRS style database Queries and Commands. The Queries are designed to return enumerables of a type.</Description>
   </PropertyGroup>
 
   <ItemGroup>

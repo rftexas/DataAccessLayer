@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>rfreels</Authors>
+    <Company>FreelsTechnology</Company>
+    <RepositoryUrl>https://github.com/rftexas/DataAccessLayer</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
