@@ -2,33 +2,33 @@
 {
     public abstract partial class DataAccess
     {
-        public abstract class Query<T> where T:new()
+        public interface IQuery<T>
         {
             /// <summary>
             /// Use this subclass to create a query that will transform from <see cref="T"/> to <see cref="TOut"/>
             /// </summary>
             /// <typeparam name="TOut"></typeparam>
-            public abstract class WithTransform<TOut> where TOut : new()
+            public interface IWithTransform<TOut>
             {
                 /// <summary>
                 /// The text of the query that will be executed against the database.
                 /// </summary>
-                public string QueryText { get; protected set; }
+                string QueryText { get; }
                 /// <summary>
                 /// Transforms from queried type to desired type
                 /// </summary>
                 /// <param name="original"></param>
                 /// <returns></returns>
-                public abstract TOut Transform(T original);
+                TOut Transform(T original);
                 /// <summary>
                 /// Optional parameters for the query.
                 /// </summary>
-                public object Parameters { get; protected set; }
+                object Parameters { get; }
                 /// <summary>
                 /// The command type of the database interaction
                 /// Defaults to <see cref="System.Data.CommandType.Text"/>
                 /// </summary>
-                public System.Data.CommandType CommandType { get; protected set; } = System.Data.CommandType.Text;
+                System.Data.CommandType CommandType { get; }
 
                 internal bool Validate()
                 {
@@ -39,23 +39,23 @@
             /// <summary>
             /// Use this subclass to create a query that has no transform.
             /// </summary>
-            public abstract class WithoutTransform
+            public interface IWithoutTransform
             {
                 /// <summary>
                 /// Optional parameters for the query.
                 /// </summary>
-                public string QueryText { get; protected set; }
+                string QueryText { get; }
 
                 /// <summary>
                 /// The text of the query that will be executed against the database.
                 /// </summary>
-                public object Parameters { get; protected set; }
+                object Parameters { get; }
 
                 /// <summary>
                 /// The command type of the database interaction
                 /// Defaults to <see cref="System.Data.CommandType.Text"/>
                 /// </summary>
-                public System.Data.CommandType CommandType { get; protected set; } = System.Data.CommandType.Text;
+                System.Data.CommandType CommandType { get; }
 
 
                 internal bool Validate()

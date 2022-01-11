@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class AdoDataAccessLayer<TConnection> : IDataAccessLayer<TConnection>
+    public class DbDataAccessLayer<TConnection> : IDataAccessLayer<TConnection>
     {
         private readonly DataConnectionFactory _factory;
 
-        public AdoDataAccessLayer(DataConnectionFactory<TConnection> factory)
+        public DbDataAccessLayer(DataConnectionFactory<TConnection> factory)
         {
             _factory = factory;
         }
 
-        public async Task Execute(DataAccess.Command command)
+        public async Task Execute(DataAccess.ICommand command)
         {
             if (!command.Validate()) throw new InvalidCommandException("Command is invalid");
             using var connection = _factory.GetConnection();
@@ -27,7 +27,7 @@ namespace DataAccessLayer
             await connection.ExecuteAsync(command.QueryText, command.Parameters, commandType: command.CommandType).ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query)
+        public async Task<IEnumerable<T>> Query<T>(DataAccess.IQuery<T>.IWithoutTransform query)
         {
             if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();
@@ -35,7 +35,7 @@ namespace DataAccessLayer
             return await connection.QueryAsync<T>(query.QueryText, query.Parameters, commandType: query.CommandType).ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.Query<T>.WithTransform<TOut> query)
+        public async Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.IQuery<T>.IWithTransform<TOut> query)
         {
             if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();

@@ -6,7 +6,7 @@ namespace DataAccessLayer.Tests
 {
     public class DataAccessLayerValidationTests
     {
-        private readonly AdoDataAccessLayer<DataAccessLayerValidationTests> _dal = new(new DataConnectionFactory<DataAccessLayerValidationTests>("", s => new FakeDbConnection(s)));
+        private readonly DbDataAccessLayer<DataAccessLayerValidationTests> _dal = new(new DataConnectionFactory<DataAccessLayerValidationTests>("", s => new FakeDbConnection(s)));
 
         [Fact]
         public async Task Validates_queries()
@@ -17,7 +17,7 @@ namespace DataAccessLayer.Tests
         [Fact]
         public async Task Validates_queries_with_transforms()
         {
-            await Assert.ThrowsAsync<InvalidQueryException>(() => _dal.Query(new TestQueryTransform<int>("")));
+            await Assert.ThrowsAsync<InvalidQueryException>(() => _dal.Query(new TestQueryTransform<int, int>("", i => i)));
         }
 
         [Fact]

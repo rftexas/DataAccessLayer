@@ -8,7 +8,7 @@ namespace DataAccessLayer.SqlServer
         public static IServiceCollection AddSqlServerDataAccessLayer<TConnection>(this IServiceCollection services, string connectionString)
         {
             services.AddSingleton(new DataConnectionFactory<TConnection>(connectionString, s => new SqlConnection(s)));
-            services.AddScoped<IDataAccessLayer<TConnection>, AdoDataAccessLayer<TConnection>>();
+            services.AddScoped<IDataAccessLayer<TConnection>, DbDataAccessLayer<TConnection>>();
 
             return services;
         }
