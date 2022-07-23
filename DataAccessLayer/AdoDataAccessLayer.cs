@@ -1,11 +1,8 @@
 ﻿using Dapper;
 using DataAccessLayer.Exceptions;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer
@@ -27,7 +24,7 @@ namespace DataAccessLayer
             await connection.ExecuteAsync(command.QueryText, command.Parameters, commandType: command.CommandType).ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query)
+        public async Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query) where T: new()
         {
             if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();
@@ -35,7 +32,7 @@ namespace DataAccessLayer
             return await connection.QueryAsync<T>(query.QueryText, query.Parameters, commandType: query.CommandType).ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.Query<T>.WithTransform<TOut> query)
+        public async Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.Query<T>.WithTransform<TOut> query) where T: new() where TOut: new()
         {
             if (!query.Validate()) throw new InvalidQueryException("Command is invalid");
             using var connection = _factory.GetConnection();

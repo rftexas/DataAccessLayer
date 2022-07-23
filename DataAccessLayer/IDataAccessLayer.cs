@@ -11,7 +11,7 @@ namespace DataAccessLayer
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query);
+        Task<IEnumerable<T>> Query<T>(DataAccess.Query<T>.WithoutTransform query) where T: new();
 
         /// <summary>
         /// Executes a query against the database.
@@ -19,7 +19,7 @@ namespace DataAccessLayer
         /// <typeparam name="T"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.Query<T>.WithTransform<TOut> query);
+        Task<IEnumerable<TOut>> Query<T, TOut>(DataAccess.Query<T>.WithTransform<TOut> query) where T: new() where TOut: new();
         
         /// <summary>
         /// Execute a query against the database
